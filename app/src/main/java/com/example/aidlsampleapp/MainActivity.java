@@ -13,16 +13,33 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.aidlsampleapp.fragment.UserFragment;
+import com.squareup.otto.Subscribe;
 
 public class MainActivity extends AppCompatActivity {
  private MoveiIDLInterface moveiIDLInterface;
  private RemoteServiceConnection remoteServiceConnection;
- Button add;
-    @Override
+ Button sendMessage;
+ TextView message;
+ @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        add = (Button)findViewById(R.id.add);
+        sendMessage = (Button)findViewById(R.id.sendMessageToFragment);
+        message = (TextView)findViewById(R.id.message);
+        sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendEvents("aku");
+            }
+        });
+        addFragment();
+
+
+       /* add = (Button)findViewById(R.id.add);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
     }
 
     private class RemoteServiceConnection implements ServiceConnection {
@@ -79,5 +96,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         connectService();
+        EventBus.getBus().register(this);
     }
+    @Subscribe
+    public void getMessage(Events.FragmentActivityMessage fragmentActivityMessage){
+       message.setText(fragmentActivityMessage.getMessage());
+        Toast.makeText(this,fragmentActivityMessage.getMessage(),Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getBus().unregister(this);
+    }
+
+    public void sendEvents(String message){
+        Events.Initalize activityFragmentMessageEvent =
+                new Events.Initalize(message);
+        EventBus.getBus().post(activityFragmentMessageEvent);
+
+    }
+    private void addFragment() {
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, new UserFragment()).commit();
+    }
+
+
 }

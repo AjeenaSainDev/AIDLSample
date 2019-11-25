@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#b5bab6"
+        android:orientation="vertical"
+        tools:ignore="MissingPrefix">
+
+
+    <TextView
+            fontPath="fonts/jiotype_medium.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/layout_top_margin"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Enter OTP"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_40"
+            android:textStyle="bold" />
+
+    <TextView
+            android:id="@+id/otp_page_title"
+            fontPath="fonts/jiotype_medium.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/app_name_top_margin"
+            android:gravity="center"
+            android:text="@string/otp_view_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_14" />
+
+
+    <com.rjil.jioidmservice.main.view.OtpEdittext
+            android:id="@+id/edit_otp_view"
+            android:layout_width="@dimen/dp_350"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:cursorVisible="false"
+            android:digits="1234567890"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="6"
+            android:tag="otp"
+            android:text=""
+            android:textIsSelectable="false"
+            android:textSize="16sp" />
+
+    <Button
+            android:id="@+id/btn_verify_otp"
+            fontPath="fonts/jiotype_medium.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_35"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/app_name_top_margin"
+            android:background="@drawable/login_button_focous"
+            android:paddingLeft="@dimen/_40sdp"
+            android:paddingRight="@dimen/_40sdp"
+            android:text="Validate OTP"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dp_16" />
+
+
+    <Button
+            fontPath="fonts/jiotype_medium.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_35"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/generate_code"
+            android:enabled="false"
+            android:paddingLeft="@dimen/_40sdp"
+            android:paddingRight="@dimen/_40sdp"
+            android:text="Resend OTP"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dp_16" />
+</LinearLayout>
