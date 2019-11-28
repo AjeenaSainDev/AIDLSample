@@ -21,6 +21,7 @@ class KotlineSample : Activity() {
         super.onCreate(savedInstanceState)
         dowhile()
         whilesample()
+        forloopsample()
        /* var input = intent.getStringExtra("inputExtra")
         num1 = 7;
         name = null
@@ -71,5 +72,21 @@ class KotlineSample : Activity() {
             println("while"+"$x ")
             x++
         }
+    }
+    fun forloopsample(){
+       /* var primeNumbers = intArrayOf(2, 3, 5, 7, 11)
+
+        for(number in primeNumbers) {
+            print("forsample"+"$number ")
+        }*/
+        var primeNumbers = intArrayOf(2, 3, 5, 7, 11)
+        for((index, number) in primeNumbers.withIndex()) {
+            println("PrimeNumber(${index + 1}): $number")
+        }
+
+        /*for(index in primeNumbers.indices) {//indices which returns a range of valid indices of that array.
+            println("PrimeIndex"+"$index ")
+            println("PrimeNumber(${index+1}): ${primeNumbers[index]}")
+        }*/
     }
 }
