@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
+import com.example.aidlsampleapp.model.Student
 import java.util.*
 
 /**
@@ -22,6 +23,9 @@ class KotlineSample : Activity() {
         dowhile()
         whilesample()
         forloopsample()
+        var student = Student("aju","aku")
+        student.first_name =" Akhil"
+
        /* var input = intent.getStringExtra("inputExtra")
         num1 = 7;
         name = null
