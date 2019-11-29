@@ -13,6 +13,6 @@ class SavingAccount  (accountNumber: String, accountName: String, val interestRa
         this.depositeMoney(interest);
     }
     fun withDraw(){
-        this.withDraw();
+        this.withDraw()
     }
 }

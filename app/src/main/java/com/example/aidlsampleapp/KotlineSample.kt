@@ -1,10 +1,8 @@
 package com.example.aidlsampleapp
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
-import com.example.aidlsampleapp.model.Student
+import com.example.aidlsampleapp.model.Students
 import java.util.*
 
 /**
@@ -23,7 +21,7 @@ class KotlineSample : Activity() {
         dowhile()
         whilesample()
         forloopsample()
-        var student = Student("aju","aku")
+        var student = Students("aju","aku")
         student.first_name =" Akhil"
 
        /* var input = intent.getStringExtra("inputExtra")
@@ -87,10 +85,26 @@ class KotlineSample : Activity() {
         for((index, number) in primeNumbers.withIndex()) {
             println("PrimeNumber(${index + 1}): $number")
         }
+        finish()
 
         /*for(index in primeNumbers.indices) {//indices which returns a range of valid indices of that array.
             println("PrimeIndex"+"$index ")
             println("PrimeNumber(${index+1}): ${primeNumbers[index]}")
         }*/
+    }
+
+    override fun onStop() {
+        super.onStop()
+        println("Activity on stop")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("Activity on pause")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        println("Activity on Destroy")
     }
 }

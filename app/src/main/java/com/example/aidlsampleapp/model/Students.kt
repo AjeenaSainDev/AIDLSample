@@ -6,7 +6,7 @@ package com.example.aidlsampleapp.model
  * ajeena.sainudeen@claysol.com
  *
  */
-class Student {
+class Students {
     var first_name: String = "Guest"
     var last_name: String = "Ghost"
 
