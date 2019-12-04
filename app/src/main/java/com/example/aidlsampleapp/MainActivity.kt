@@ -18,13 +18,19 @@ import android.widget.TextView
 import android.widget.Toast
 
 import com.example.aidlsampleapp.fragment.UserFragment
+import com.example.aidlsampleapp.model.ProfileArray
 import com.squareup.otto.Subscribe
+import org.json.JSONObject
+import java.io.IOException
+import java.io.InputStream
+import java.lang.Exception
+import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
     private var moveiIDLInterface: MoveiIDLInterface? = null
     private var remoteServiceConnection: RemoteServiceConnection? = null
     lateinit var sendMessage: Button
-    lateinit var  message: TextView
+    lateinit var message: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,21 +39,8 @@ class MainActivity : AppCompatActivity() {
         sendMessage.setOnClickListener { sendEvents("aku") }
         addFragment()
 
-
-        /* add = (Button)findViewById(R.id.add);
-
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                  int result =  moveiIDLInterface.addNumbers(2,4);
-               System.out.println("result"+result);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-        });*/
     }
+
 
     private inner class RemoteServiceConnection : ServiceConnection {
         override fun onServiceConnected(componentName: ComponentName, iBinder: IBinder) {
@@ -77,10 +70,10 @@ class MainActivity : AppCompatActivity() {
         //binding to remote service
         var bRet = bindService(it, remoteServiceConnection!!, Service.BIND_AUTO_CREATE)
         Log.d("IRemote", "Service.BIND_AUTO_CREATE")
-               /* Intent i = new Intent("com.androidaidl.androidaidlservice.ProductService");
-        i.setPackage("com.androidaidl.androidaidlservice");
-        boolean ret = bindService(i, remoteServiceConnection, Context.BIND_AUTO_CREATE);
-        System.out.println("bound"+ret);*/
+        /* Intent i = new Intent("com.androidaidl.androidaidlservice.ProductService");
+ i.setPackage("com.androidaidl.androidaidlservice");
+ boolean ret = bindService(i, remoteServiceConnection, Context.BIND_AUTO_CREATE);
+ System.out.println("bound"+ret);*/
     }
 
     override fun onStart() {
@@ -110,5 +103,22 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, UserFragment()).commit()
     }
 
+    fun fetchJsonAsset() : String {
+        var json_data: String = ""
+        var input_stream: InputStream
+        val charset: Charset = Charsets.UTF_8
+        try {
+            input_stream = this.getAssets().open("mock.json")
+            val size = `input_stream`.available()
+            val buffer = ByteArray(size)
+            `input_stream`.read(buffer)
+            `input_stream`.close()
+            json_data = String(buffer, charset)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
+        }
+       return json_data
+    }
 
 }

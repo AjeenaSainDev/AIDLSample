@@ -1,0 +1,31 @@
+{
+  "ssoToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWUiOiI3YTFkODQ5Zi03ZjllLTRhNmMtOTJjOC1mNjVjYTIwMGMzZjIiLCJ1c2VyVHlwZSI6IlJJTHBlcnNvbiIsImF1dGhMZXZlbCI6IjQwIiwiZGV2aWNlSWQiOiI0YmU2ZmM4ZDJkMmIzNjc3MDI3ZmE1MjE5ZDgzYWFkZTMwY2NjNTZkNmMyMjI0ZWI4NWM4YTdhNWIwNjY5OGVkN2NjOTM2NGU4MWU1OGZiYjU1ZjM3MjQ2OTBhYWYzNDVlMTdkMWQwMGFlNTM1NGZkOTdiYmNjYmFlYTRiNWUxYyIsImp0aSI6IjUyOTRjMzhhLWJjOTYtNGU1YS1hZjJmLWNhZTAyNTIwOTE5YSIsImlhdCI6MTU3MzA0MDIxM30.Ksxd-gccZyyIyRk0llh0Pde0cb5b74P9FBnvwUAEqnwAkhil",
+  "ssoLevel": "50",
+  "jToken": "[42]asdjfi934lkasfoiafgladfgdoiasdfkljasdf==",
+  "lbCookie": "1",
+  "sessionAttributes": {
+    "user": {
+      "unique": "345lsd-43r-sfs-44",
+      "subscriberId": "CRM9864",
+      "uid": " Akhil.Raj ",
+      "commonName": "Abbey Abbie",
+      "preferredLocale": "en-US",
+      "mail": "john.doe@foo.com",
+      "photoUrl": "http://.... ",
+      "mobile": "+919876543210",
+      "ssoLevel": "50",
+      "primaryUnique": "769 ace - 12 e - ece - 33"
+
+    },
+    "profile": {
+      "profileName": "someProfile",
+      "profileId": "23-2342-234234-23424",
+      "billingId": "238942sfsdfs",
+      "entitlements": ["VOD 1.24", "MOBITV"]
+    },
+    "otpValidatedDate": "1997-07-16T19:20:30+01:00",
+    "passwordExpiry": ""
+  }
+}
+
+
