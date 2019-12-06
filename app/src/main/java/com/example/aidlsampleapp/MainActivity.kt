@@ -16,8 +16,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import com.example.aidlsampleapp.databinding.ActivityMainBinding
 
 import com.example.aidlsampleapp.fragment.UserFragment
+import com.example.aidlsampleapp.model.Post
 import com.example.aidlsampleapp.model.ProfileArray
 import com.squareup.otto.Subscribe
 import org.json.JSONObject
@@ -28,19 +31,40 @@ import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
     private var moveiIDLInterface: MoveiIDLInterface? = null
-    private var remoteServiceConnection: RemoteServiceConnection? = null
+   // private var remoteServiceConnection: RemoteServiceConnection? = null
     lateinit var sendMessage: Button
-    lateinit var message: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        sendMessage = findViewById<View>(R.id.sendMessageToFragment) as Button
-        message = findViewById<View>(R.id.message) as TextView
-        sendMessage.setOnClickListener { sendEvents("aku") }
-        addFragment()
+        val data : ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        val post = Post(1,2,"achu","music")
+        data.setVariable(BR.post,post)
+        data.executePendingBindings()
+       /* sendMessage = findViewById<View>(R.id.sendMessageToFragment) as Button
+        sendMessage.setOnClickListener {
+            val nums = listOf(1,2,3,4,5)
+          var name =  nums.joinToString(
+                    separator = ", ",
+                    prefix = "{",
+                    postfix = "}",
+                    limit = 4,
+                    truncated = "there’s more ..."
+            )
+        println("joinToString Sample"+name)
+
+            val month = "(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)"
+
+            val myString = """This is my string
+            which I want to be
+            on multiple lines."""
+            println(myString)
+
+        }*/
+      //  addFragment()
 
     }
 
+/*
 
     private inner class RemoteServiceConnection : ServiceConnection {
         override fun onServiceConnected(componentName: ComponentName, iBinder: IBinder) {
@@ -70,10 +94,12 @@ class MainActivity : AppCompatActivity() {
         //binding to remote service
         var bRet = bindService(it, remoteServiceConnection!!, Service.BIND_AUTO_CREATE)
         Log.d("IRemote", "Service.BIND_AUTO_CREATE")
-        /* Intent i = new Intent("com.androidaidl.androidaidlservice.ProductService");
+        */
+/* Intent i = new Intent("com.androidaidl.androidaidlservice.ProductService");
  i.setPackage("com.androidaidl.androidaidlservice");
  boolean ret = bindService(i, remoteServiceConnection, Context.BIND_AUTO_CREATE);
- System.out.println("bound"+ret);*/
+ System.out.println("bound"+ret);*//*
+
     }
 
     override fun onStart() {
@@ -84,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
     @Subscribe
     fun getMessage(fragmentActivityMessage: Events.FragmentActivityMessage) {
-        message.text = fragmentActivityMessage.message
+      //  message.text = fragmentActivityMessage.message
         Toast.makeText(this, fragmentActivityMessage.message, Toast.LENGTH_SHORT).show()
     }
 
@@ -120,5 +146,6 @@ class MainActivity : AppCompatActivity() {
         }
        return json_data
     }
+*/
 
 }

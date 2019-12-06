@@ -8,11 +8,11 @@ import com.google.gson.annotations.SerializedName
  * ajeena.sainudeen@claysol.com
  *
  */
-class ProfileArray {
+class ProfileArray : Cloneable{
     @SerializedName("profileId")
-     var profile_id  = ""
-        private set
-        get () = field
+     var profile_id  = ""  /**define setters and getters in kotlin**/
+    private set
+    get () = field
 
     @SerializedName("profileName")
      var profileName: String= ""
@@ -34,15 +34,18 @@ class ProfileArray {
         private set
         get () = field
 
-  /*  constructor(profile_id: String, profileName: String, passwordProtected: String, unique_id: String, entitlements: List<String>?) {
+    constructor(profile_id: String, profileName: String) {
         this.profile_id = profile_id
         this.profileName = profileName
-        this.passwordProtected = passwordProtected
+        /*this.passwordProtected = passwordProtected
         this.unique_id = unique_id
-        this.entitlements = entitlements
+        this.entitlements = entitlements*/
 
 
-    }*/
+    }
+    data class ProfileArray(var profile_id: String, var profileName: String){
+
+  }
 
 
 }
